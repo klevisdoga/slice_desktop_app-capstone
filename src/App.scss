@@ -1,0 +1,36 @@
+@use './Partials/variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  max-height: 100vh;
+}
+
+html {
+  margin: 0;
+  min-width: 375px;
+  color: $primary-light;
+  background: linear-gradient(45deg, $primary-dark, #171819, #424547, $primary-dark );
+  background-size: 600% 100%;
+  animation: gradient 35s linear infinite;
+  animation-direction: alternate;
+}
+
+@keyframes gradient {
+  0%{
+    background-position: 0%;
+  }
+  100%{
+    background-position: 100%;
+  }
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+  &:active{
+    transform: scale(.8);
+  }
+}

@@ -1,0 +1,117 @@
+@use "../../Partials/mixins" as *;
+@use "../../Partials/variables" as *;
+
+.sub__modal {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $primary-dark;
+
+    @include tablet {
+        width: 60%;
+        height: fit-content;
+        margin: 0 auto;
+        position: static;
+    }
+    @include desktop{
+        width: 40%;
+    }
+
+    &-container {
+        @include tablet{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            background: linear-gradient(rgba(57, 57, 57, 0.5), rgba(57, 57, 57, 0.5));
+        }
+    }
+
+    &-close {
+        width: 25px;
+        align-self: flex-start;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &-title {
+        height: fit-content;
+        width: 100%;
+        padding-bottom: 1rem;
+        text-align: center;
+        border-bottom: 1px solid $primary-light;
+        color: $primary-light;
+    }
+
+    &-info {
+        width: 100%;
+        height: 100%;
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $primary-light;
+
+        @include tablet{
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: flex-start;
+        }
+
+        &-prev {
+            margin-bottom: 2rem;
+            text-align: center;
+            width: 7rem
+        }
+
+        &-next {
+            @extend .sub__modal-info-prev;
+        }
+
+        &-amount {
+            @extend .sub__modal-info-prev;
+        }
+
+        &-title {
+            margin: 0;
+            text-align: center;
+            color: $primary-light;
+        }
+        &-span {
+            font-size: 0.75rem;
+        }
+    }
+
+    &-delete{
+        margin: 1rem 0;
+        padding: .5rem 1rem;
+        border-radius: 24px;
+        border: none;
+        color: red;
+
+        &:active{
+            transform: scale(.8);
+        }
+
+        &-container{
+            display: flex;
+            justify-content: space-evenly;
+            &--delete{
+                @extend .sub__modal-delete;
+            }
+            &--cancel{
+                @extend .sub__modal-delete;
+                color: $primary-dark;
+            }
+        }
+    }
+}
